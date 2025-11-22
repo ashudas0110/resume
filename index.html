@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashutosh Das | Data Scientist & Engineer</title>
+    <meta name="description" content="Portfolio of Ashutosh Das - Senior Data Scientist & Engineer specializing in Azure, Databricks, and GenAI.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        dark: '#0f172a',
+                        card: '#1e293b',
+                        primary: '#38bdf8', // Light Blue
+                        secondary: '#818cf8', // Indigo/Purple
+                        accent: '#2dd4bf', // Teal
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-gradient-gold {
+            background: linear-gradient(to right, #fbbf24, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Typing Cursor */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #38bdf8;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Background Shapes */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Background Blobs -->
+    <div class="bg-shape bg-primary w-96 h-96 top-0 left-0 animate-blob"></div>
+    <div class="bg-shape bg-secondary w-96 h-96 top-0 right-0 animate-blob animation-delay-2000"></div>
+    <div class="bg-shape bg-accent w-96 h-96 bottom-0 left-1/2 animate-blob animation-delay-4000"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 glass border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold font-mono text-white tracking-tighter">
+                        <span class="text-primary">&lt;</span>AD<span class="text-primary">/&gt;</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#projects" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#experience" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#certifications" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Certifications</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <a href="https://www.linkedin.com/in/ashutosh-das-0a290b124/" target="_blank" class="bg-primary/10 hover:bg-primary/20 text-primary border border-primary/50 px-4 py-2 rounded-full text-sm font-medium transition-all">
+                        <i class="fab fa-linkedin mr-2"></i>Connect
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMobileMenu()">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden glass border-t border-slate-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#projects" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="#experience" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center justify-center relative pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="md:w-2/3 text-center md:text-left z-10">
+                <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase bg-primary/10 rounded-full border border-primary/20">
+                    Azure • Databricks • GenAI
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4">
+                    Hi, I'm <span class="text-gradient">Ashutosh Das</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-slate-400 font-light mb-6 h-12">
+                    I build <span id="typing-text" class="text-white font-semibold"></span><span class="cursor">&nbsp;</span>
+                </h2>
+                <p class="mt-4 max-w-2xl text-lg text-slate-400 mb-8 leading-relaxed">
+                    Senior Data Scientist & Engineer with <strong class="text-white">5+ years</strong> of experience architecting petabyte-scale Lakehouse platforms. 
+                    <strong class="text-primary">10x Multi-Cloud Certified</strong> (Azure, GCP, AWS). Expert in FinOps, ETL Optimization (-62% runtime), and production-grade RAG Agents.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#projects" class="px-8 py-3 rounded-lg bg-primary hover:bg-blue-400 text-slate-900 font-bold transition-all shadow-[0_0_20px_rgba(56,189,248,0.5)]">
+                        View My Work
+                    </a>
+                    <a href="https://github.com/ashudas0110" target="_blank" class="px-8 py-3 rounded-lg glass hover:bg-white/10 border border-white/20 font-medium transition-all flex items-center justify-center gap-2">
+                        <i class="fab fa-github"></i> GitHub Profile
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Visual Element (Code Block) -->
+            <div class="md:w-1/3 mt-12 md:mt-0 relative hidden md:block">
+                <div class="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-30"></div>
+                <div class="relative rounded-lg bg-[#0d1117] p-6 border border-slate-700 shadow-2xl font-mono text-sm text-slate-300 leading-relaxed">
+                    <div class="flex gap-2 mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <p><span class="text-pink-500">class</span> <span class="text-yellow-300">DataEngineer</span>:</p>
+                    <p class="pl-4"><span class="text-pink-500">def</span> <span class="text-blue-400">__init__</span>(self):</p>
+                    <p class="pl-8">self.stack = [<span class="text-green-400">"Azure"</span>, <span class="text-green-400">"Databricks"</span>]</p>
+                    <p class="pl-8">self.gen_ai = <span class="text-purple-400">True</span></p>
+                    <p class="pl-8">self.optimization = <span class="text-green-400">"62% Faster"</span></p>
+                    <br>
+                    <p class="pl-4"><span class="text-pink-500">def</span> <span class="text-blue-400">deploy_rag_agent</span>(self):</p>
+                    <p class="pl-8"><span class="text-gray-500"># Production RAG System</span></p>
+                    <p class="pl-8"><span class="text-pink-500">return</span> <span class="text-green-400">"High Accuracy & Low Latency"</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Technical <span class="text-gradient">Arsenal</span></h2>
+            <p class="text-center text-slate-400 mb-12">My toolkit for building scalable, resilient data platforms.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Cloud & Compute -->
+                <div class="glass p-8 rounded-2xl border-t-4 border-primary hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-6 text-primary">
+                        <i class="fas fa-cloud text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Cloud & Compute</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Azure (Expert)</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Databricks</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Synapse Analytics</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">ADF</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">AWS</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">GCP</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Event Hubs</span>
+                    </div>
+                </div>
+
+                <!-- Big Data & AI -->
+                <div class="glass p-8 rounded-2xl border-t-4 border-secondary hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mb-6 text-secondary">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Big Data & GenAI</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">PySpark</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Delta Lake</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">LangChain</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">RAG</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">OpenAI API</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Vector Search</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Mosaic AI</span>
+                    </div>
+                </div>
+
+                <!-- DevOps & Tools -->
+                <div class="glass p-8 rounded-2xl border-t-4 border-accent hover:-translate-y-2 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mb-6 text-accent">
+                        <i class="fas fa-code-branch text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">DevOps & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">CI/CD</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Terraform (IaC)</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Docker</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Git</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Power BI</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">SQLAlchemy</span>
+                        <span class="px-3 py-1 bg-slate-700 rounded-full text-sm">Bash</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="text-gradient">Projects</span></h2>
+                <p class="text-slate-400">Real-world problems solved at scale. High impact, production-grade solutions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Project 1: NAP -->
+                <div class="glass glass-card rounded-2xl overflow-hidden flex flex-col">
+                    <div class="p-8 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white">Petabyte-Scale Lakehouse (NAP)</h3>
+                            <i class="fas fa-plane-departure text-slate-500 text-xl"></i>
+                        </div>
+                        <p class="text-slate-400 mb-6">
+                            Architected a 5-layer Medallion Architecture on <span class="text-primary">Azure Synapse & Databricks</span> for a global airline. Managed PII data governance via Unity Catalog.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-slate-800/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-accent">62%</div>
+                                <div class="text-xs text-slate-400 uppercase">Faster ETL</div>
+                            </div>
+                            <div class="bg-slate-800/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-accent">40%</div>
+                                <div class="text-xs text-slate-400 uppercase">Cost Reduced</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="text-xs font-mono bg-primary/10 text-primary px-2 py-1 rounded">Azure Databricks</span>
+                            <span class="text-xs font-mono bg-primary/10 text-primary px-2 py-1 rounded">Synapse</span>
+                            <span class="text-xs font-mono bg-primary/10 text-primary px-2 py-1 rounded">PolyBase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: GenAI Chatbot -->
+                <div class="glass glass-card rounded-2xl overflow-hidden flex flex-col">
+                    <div class="p-8 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white">Enterprise RAG Chatbot</h3>
+                            <i class="fas fa-robot text-slate-500 text-xl"></i>
+                        </div>
+                        <p class="text-slate-400 mb-6">
+                            Built a production GenAI agent for Bayer Healthcare using <span class="text-secondary">Mosaic AI & Vector Search</span>. Enables natural language querying of complex medical device data.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-slate-800/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-secondary">60%</div>
+                                <div class="text-xs text-slate-400 uppercase">Ops Savings</div>
+                            </div>
+                            <div class="bg-slate-800/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-secondary">Secure</div>
+                                <div class="text-xs text-slate-400 uppercase">RBAC/PII Safe</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="text-xs font-mono bg-secondary/10 text-secondary px-2 py-1 rounded">LangChain</span>
+                            <span class="text-xs font-mono bg-secondary/10 text-secondary px-2 py-1 rounded">Vector Search</span>
+                            <span class="text-xs font-mono bg-secondary/10 text-secondary px-2 py-1 rounded">Azure OpenAI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Event Driven Bridge -->
+                <div class="glass glass-card rounded-2xl overflow-hidden flex flex-col">
+                    <div class="p-8 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white">Real-Time Integration Bridge</h3>
+                            <i class="fas fa-bolt text-slate-500 text-xl"></i>
+                        </div>
+                        <p class="text-slate-400 mb-6">
+                            Designed an event-driven bridge between Planisware and MDM using Azure Functions & Event Hubs. Implemented Dead Letter Queues for fault tolerance.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-slate-800/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-green-400">99.97%</div>
+                                <div class="text-xs text-slate-400 uppercase">Reliability</div>
+                            </div>
+                            <div class="bg-slate-800/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-green-400">75%</div>
+                                <div class="text-xs text-slate-400 uppercase">MTTR Drop</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="text-xs font-mono bg-green-500/10 text-green-400 px-2 py-1 rounded">Azure Functions</span>
+                            <span class="text-xs font-mono bg-green-500/10 text-green-400 px-2 py-1 rounded">Event Hubs</span>
+                            <span class="text-xs font-mono bg-green-500/10 text-green-400 px-2 py-1 rounded">Power BI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: CMS & Migration -->
+                <div class="glass glass-card rounded-2xl overflow-hidden flex flex-col">
+                    <div class="p-8 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white">CMS Pipeline & SQL MI Migration</h3>
+                            <i class="fas fa-database text-slate-500 text-xl"></i>
+                        </div>
+                        <p class="text-slate-400 mb-6">
+                            Led SQL MI to Synapse migration and built CMS data pipelines. Implemented Lifecycle Management policies for cold data tiering.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-slate-800/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-accent">$2,100</div>
+                                <div class="text-xs text-slate-400 uppercase">Monthly Savings</div>
+                            </div>
+                            <div class="bg-slate-800/50 p-3 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-accent">Data Vault</div>
+                                <div class="text-xs text-slate-400 uppercase">Modeling</div>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span class="text-xs font-mono bg-accent/10 text-accent px-2 py-1 rounded">ADF</span>
+                            <span class="text-xs font-mono bg-accent/10 text-accent px-2 py-1 rounded">Data Vault 2.0</span>
+                            <span class="text-xs font-mono bg-accent/10 text-accent px-2 py-1 rounded">FinOps</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Professional <span class="text-gradient">Journey</span></h2>
+            
+            <div class="relative border-l border-slate-700 ml-4 md:ml-0">
+                <!-- TCS -->
+                <div class="mb-10 ml-6 md:pl-8 relative group">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-[43px] ring-4 ring-slate-900">
+                        <i class="fas fa-briefcase text-slate-900 text-sm"></i>
+                    </span>
+                    <div class="glass p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-white">Data Scientist & Engineer</h3>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-primary font-semibold">Tata Consultancy Services (TCS)</span>
+                            <span class="text-slate-400 text-sm">Dec 2021 – Present</span>
+                        </div>
+                        <p class="text-slate-400 mt-2 text-sm leading-relaxed">
+                            Leading Data Engineering & GenAI initiatives for Global Airlines & Healthcare giants. 
+                            Designed Lakehouse architectures, reduced ETL runtimes by 62%, and built secure RAG Chatbots using Azure OpenAI. 
+                            Recipient of "Special Initiative Award" and consistently rated in the top performance band.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Arad Ventures -->
+                <div class="mb-10 ml-6 md:pl-8 relative group">
+                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-600 rounded-full -left-[43px] ring-4 ring-slate-900">
+                        <i class="fas fa-hard-hat text-slate-200 text-sm"></i>
+                    </span>
+                    <div class="glass p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-white">Electrical Engineering Analyst</h3>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-slate-300 font-semibold">Arad Ventures Pvt Ltd</span>
+                            <span class="text-slate-400 text-sm">Oct 2020 – Nov 2021</span>
+                        </div>
+                        <p class="text-slate-400 mt-2 text-sm leading-relaxed">
+                            Spearheaded data analytics for EPC operations. Built "Single Source of Truth" pipelines using Python & SQL, 
+                            saving 15+ engineering hours/week via automation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Elite <span class="text-gradient-gold">Certifications</span></h2>
+            <p class="text-center text-slate-400 mb-12">10x Multi-Cloud Certified (Azure, GCP, AWS)</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Databricks -->
+                <div class="glass p-6 rounded-xl border border-slate-700 text-center hover:border-orange-500/50 transition-colors">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" class="h-12 mx-auto mb-4 opacity-0" alt="">
+                    <h3 class="font-bold text-white mb-2">Databricks Certified</h3>
+                    <p class="text-sm text-orange-400">Data Engineer Professional</p>
+                    <p class="text-xs text-slate-500 mt-1">Data Analyst Associate</p>
+                </div>
+
+                <!-- Google -->
+                <div class="glass p-6 rounded-xl border border-slate-700 text-center hover:border-blue-500/50 transition-colors">
+                    <h3 class="font-bold text-white mb-2">Google Cloud</h3>
+                    <p class="text-sm text-blue-400">Professional Data Engineer</p>
+                    <p class="text-xs text-slate-500 mt-1">Professional ML Engineer</p>
+                </div>
+
+                <!-- Azure -->
+                <div class="glass p-6 rounded-xl border border-slate-700 text-center hover:border-primary/50 transition-colors">
+                    <h3 class="font-bold text-white mb-2">Microsoft Azure</h3>
+                    <p class="text-sm text-primary">Data Scientist Associate</p>
+                    <p class="text-xs text-slate-500 mt-1">AI Engineer & Data Engineer</p>
+                </div>
+
+                <!-- AWS -->
+                <div class="glass p-6 rounded-xl border border-slate-700 text-center hover:border-yellow-500/50 transition-colors">
+                    <h3 class="font-bold text-white mb-2">AWS Certified</h3>
+                    <p class="text-sm text-yellow-500">Data Engineer Associate</p>
+                    <p class="text-xs text-slate-500 mt-1">Developer Associate</p>
+                </div>
+            </div>
+
+            <!-- GATE Scores -->
+            <div class="mt-12 flex justify-center gap-4 flex-wrap">
+                <span class="px-4 py-2 bg-slate-800 rounded-full border border-slate-600 text-sm font-mono">
+                    <i class="fas fa-award text-yellow-500 mr-2"></i>GATE CS 2024 Qualified (Top 6%)
+                </span>
+                <span class="px-4 py-2 bg-slate-800 rounded-full border border-slate-600 text-sm font-mono">
+                    <i class="fas fa-award text-yellow-500 mr-2"></i>GATE EC 2023 Qualified
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold mb-6">Let's Build Something Extraordinary</h2>
+            <div class="flex justify-center space-x-8 mb-8">
+                <a href="https://www.linkedin.com/in/ashutosh-das-0a290b124/" class="text-slate-400 hover:text-primary text-3xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/ashudas0110" class="text-slate-400 hover:text-white text-3xl transition-colors"><i class="fab fa-github"></i></a>
+                <a href="mailto:ashutosh.das563@gmail.com" class="text-slate-400 hover:text-red-400 text-3xl transition-colors"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="text-slate-500 text-sm">
+                &copy; 2025 Ashutosh Das. Designed with <i class="fas fa-code text-primary"></i> & <i class="fas fa-coffee text-yellow-600"></i>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Typing Effect
+        const texts = ["Lakehouse Architectures.", "GenAI RAG Agents.", "Real-Time Pipelines.", "Cost-Optimized Solutions."];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            
+            document.getElementById("typing-text").textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Wait before deleting
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-up');
+                    entry.target.style.opacity = 1;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Target elements for animation
+        document.querySelectorAll('.glass-card, .glass').forEach((el) => {
+            el.style.opacity = 0; // Initial state
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
