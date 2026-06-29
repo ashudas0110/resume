@@ -1,19 +1,15 @@
 /* ==========================================
    ULTIMATE FUTURISTIC PORTFOLIO — JavaScript
    ========================================== */
-
 (() => {
     'use strict';
-
     // ==================== MOUSE GLOW FOLLOWER ====================
     const mouseGlow = document.getElementById('mouse-glow');
     let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
-
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
-
     function updateGlow() {
         glowX += (mouseX - glowX) * 0.08;
         glowY += (mouseY - glowY) * 0.08;
@@ -23,19 +19,16 @@
         requestAnimationFrame(updateGlow);
     }
     updateGlow();
-
     // ==================== PARTICLE SYSTEM (Mouse-Reactive) ====================
     const canvas = document.getElementById('particles-canvas');
     const ctx = canvas ? canvas.getContext('2d') : null;
     let particles = [];
     let canvasW, canvasH;
-
     function resizeCanvas() {
         if (!canvas) return;
         canvasW = canvas.width = window.innerWidth;
         canvasH = canvas.height = window.innerHeight;
     }
-
     class Particle {
         constructor() {
             this.reset();
@@ -52,7 +45,6 @@
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
-
             // Mouse interaction — particles gently move away
             const dx = this.x - mouseX;
             const dy = this.y - (mouseY + window.scrollY);
@@ -62,7 +54,6 @@
                 this.x += (dx / dist) * force * 0.8;
                 this.y += (dy / dist) * force * 0.8;
             }
-
             if (this.x < 0 || this.x > canvasW || this.y < 0 || this.y > canvasH) {
                 this.reset();
             }
@@ -74,7 +65,6 @@
             ctx.fill();
         }
     }
-
     function initParticles() {
         if (!canvas) return;
         resizeCanvas();
@@ -84,7 +74,6 @@
             particles.push(new Particle());
         }
     }
-
     function drawConnections() {
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
@@ -102,7 +91,6 @@
             }
         }
     }
-
     function animateParticles() {
         if (!ctx) return;
         ctx.clearRect(0, 0, canvasW, canvasH);
@@ -110,28 +98,23 @@
         drawConnections();
         requestAnimationFrame(animateParticles);
     }
-
     initParticles();
     animateParticles();
     window.addEventListener('resize', () => { resizeCanvas(); });
-
     // ==================== TYPING EFFECT ====================
     const roles = [
-        'Data Scientist & Engineer',
+        'Senior Data Engineer',
+        'GenAI & LLMOps Engineer',
+        'Agentic RAG Architect',
         'Lakehouse Architect',
-        'GenAI Solutions Builder',
-        'Multi-Cloud Expert',
-        'FinOps Champion',
-        'Agentic RAG Specialist'
+        'Multi-Cloud Engineer (21x)',
+        'FinOps Practitioner'
     ];
-
     const typedEl = document.getElementById('typed-text');
     let roleIdx = 0, charIdx = 0, isDeleting = false;
-
     function typeEffect() {
         if (!typedEl) return;
         const current = roles[roleIdx];
-
         if (!isDeleting) {
             typedEl.textContent = current.substring(0, charIdx + 1);
             charIdx++;
@@ -154,18 +137,15 @@
         }
     }
     setTimeout(typeEffect, 800);
-
     // ==================== NAVBAR ====================
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.getElementById('nav-links');
-
     window.addEventListener('scroll', () => {
         if (navbar) {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         }
     });
-
     if (navToggle && navLinks) {
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
@@ -178,7 +158,6 @@
             });
         });
     }
-
     // Active nav link tracking
     const sections = document.querySelectorAll('section[id]');
     function updateActiveLink() {
@@ -198,10 +177,8 @@
         });
     }
     window.addEventListener('scroll', updateActiveLink);
-
     // ==================== 3D TILT CARDS ====================
     const tiltCards = document.querySelectorAll('.tilt-card');
-
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
@@ -213,15 +190,12 @@
             const rotateY = ((x - centerX) / centerX) * 4;
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
         });
-
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
         });
     });
-
     // ==================== MAGNETIC BUTTONS ====================
     const magneticBtns = document.querySelectorAll('.magnetic-btn');
-
     magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
@@ -229,12 +203,10 @@
             const y = e.clientY - rect.top - rect.height / 2;
             btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
         });
-
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = 'translate(0, 0)';
         });
     });
-
     // ==================== SCROLL REVEAL ====================
     const revealElements = document.querySelectorAll('.reveal-up, .reveal-item');
     const revealObserver = new IntersectionObserver((entries) => {
@@ -245,7 +217,6 @@
                 // Convert ms to s if numeric
                 const delayMs = parseFloat(delay);
                 const delayVal = isNaN(delayMs) ? 0 : (delayMs < 10 ? delayMs * 1000 : delayMs);
-
                 setTimeout(() => {
                     el.classList.add('revealed');
                 }, delayVal);
@@ -253,9 +224,7 @@
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
     revealElements.forEach(el => revealObserver.observe(el));
-
     // ==================== COUNTER ANIMATION ====================
     const counters = document.querySelectorAll('.metric-value');
     const counterObserver = new IntersectionObserver((entries) => {
@@ -266,35 +235,29 @@
                 const isDecimal = el.classList.contains('metric-decimal');
                 const duration = 2000;
                 const start = performance.now();
-
                 function animate(now) {
                     const elapsed = now - start;
                     const progress = Math.min(elapsed / duration, 1);
                     // Ease out quart
                     const eased = 1 - Math.pow(1 - progress, 4);
                     const current = eased * target;
-
                     if (isDecimal) {
                         el.textContent = current.toFixed(2);
                     } else {
                         el.textContent = Math.floor(current);
                     }
-
                     if (progress < 1) {
                         requestAnimationFrame(animate);
                     } else {
                         el.textContent = isDecimal ? target.toFixed(2) : Math.floor(target);
                     }
                 }
-
                 requestAnimationFrame(animate);
                 counterObserver.unobserve(el);
             }
         });
     }, { threshold: 0.5 });
-
     counters.forEach(c => counterObserver.observe(c));
-
     // ==================== SMOOTH SCROLL ====================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -305,5 +268,4 @@
             }
         });
     });
-
 })();
